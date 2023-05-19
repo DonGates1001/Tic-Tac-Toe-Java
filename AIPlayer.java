@@ -65,7 +65,7 @@ public class AIPlayer extends Player {
 	 * @return max index of max value in array
 	 */
 	private int findBestMove(int[] moves, int[][] grid) {
-		int max = -1000;
+		int max = -100000;
 		int index = 0;
 		for (int i = 0; i < moves.length; i++) {
 			//ensure the cell is available and check if its content is a new max
@@ -105,14 +105,14 @@ public class AIPlayer extends Player {
 					TicTacToe.GameState boardStatus = TicTacToe.checkGrid(gridAfterMove, getMarker());
 					//if win, increment root index by score
 					if (boardStatus == TicTacToe.GameState.WIN) {
-						root.getChildren()[index] += score;
+						root.getChildren()[index] += score * 5;
 					//if loss, decrement root index by score.
 					} else if (boardStatus == TicTacToe.GameState.LOSS) {
 						//increase the penalty if this move hands opponent win on their next move
 						if (score == 5) {
-							root.getChildren()[index] -= score * 10;
+							root.getChildren()[index] -= score * 20;
 						} else {
-							root.getChildren()[index] -= score;
+							root.getChildren()[index] -= score * 1;
 						}
 					//if draw, add nothing to root index and break out of conditions
 					} else if (boardStatus == TicTacToe.GameState.DRAW) {
