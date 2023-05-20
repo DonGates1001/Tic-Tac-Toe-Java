@@ -93,7 +93,7 @@ public class TicTacToe {
 			//check for win or draw
 			gameOver = checkGrid(grid, p1.getMarker());
 			if (gameOver == GameState.WIN) {
-				System.out.println("Tic-Tac-Toe, You win!!");
+				System.out.println("Tic-Tac-Toe, Player 1 wins!!");
 			}
 			if (gameOver == GameState.DRAW) {
 				System.out.println("It's a draw!");
@@ -120,7 +120,7 @@ public class TicTacToe {
 				//check for win or draw
 				gameOver = checkGrid(grid, p2.getMarker());
 				if (gameOver == GameState.WIN) {
-					System.out.println("Tic-Tac-Toe, You win!!");
+					System.out.println("Tic-Tac-Toe, Player 2 wins!!");
 				}
 				if (gameOver == GameState.DRAW) {
 					System.out.println("It's a draw!");
