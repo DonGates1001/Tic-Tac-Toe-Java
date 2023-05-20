@@ -15,6 +15,17 @@ public class AIPlayer extends Player {
 
 	@Override
 	public int getMove(int[][] grid) {
+		boolean boardIsEmpty = true;
+		for (int m = 0; m < 3; m++) {
+		    for (int n = 0; n < 3; n++) {
+		        if (grid[m][n] != 0) {
+		            boardIsEmpty = false;
+		        }
+		    }
+		}
+		if (boardIsEmpty) {
+		    return 0;
+		}
 		DecisionNode root = createNode(null, grid);
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
@@ -25,7 +36,7 @@ public class AIPlayer extends Player {
 					//position in array of moves
 					int idx = i * 3 + j;
 					//value of current move if it terminates the game
-					int score = 6;
+					int score = 10;
 					//copy the grid
 					gridAfterMove = copyGrid(root.getGrid());
 					//make the move
@@ -109,7 +120,7 @@ public class AIPlayer extends Player {
 					//if loss, decrement root index by score.
 					} else if (boardStatus == TicTacToe.GameState.LOSS) {
 						//increase the penalty if this move hands opponent win on their next move
-						if (score == 5) {
+						if (score == 9) {
 							root.getChildren()[index] -= score * 20;
 						} else {
 							root.getChildren()[index] -= score * 1;
